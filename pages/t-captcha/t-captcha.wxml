@@ -1,0 +1,11 @@
+<!--t-captcha.wxml-->
+<view class="container">
+    <t-captcha
+            id="captcha"
+            app-id="{{AppID}}"
+            bindverify="handlerVerify"
+            bindready="handlerReady"
+            bindclose="handlerClose"
+            binderror="handlerError" />
+    <button bindtap='login'>登录</button>
+</view>
