@@ -19,5 +19,8 @@
       "version": "1.0.0",
       "provider": "wxb302e0fc8ab232b4"
     }
+  },
+  "useExtendedLib": {
+    "weui": true
   }
 }
