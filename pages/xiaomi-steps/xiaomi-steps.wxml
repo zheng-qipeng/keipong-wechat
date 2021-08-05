@@ -1,0 +1,16 @@
+
+<mp-toptips msg="{{error}}" type="error" show="{{error}}"></mp-toptips>
+<mp-form id="form" rules="{{rules}}" models="{{formData}}">
+    <mp-cells title="小米运动" footer="建议输入的步数不要过于夸张..">
+        <mp-cell prop="account" title="账号" show-error>
+            <input bindinput="formInputChange" data-field="account" placeholder="请输入小米账号"/>
+        </mp-cell>
+        <mp-cell prop="password" title="密码" show-error>
+            <input type="password" bindinput="formInputChange" data-field="password" placeholder="请输入账号密码"/>
+        </mp-cell>
+        <mp-cell prop="steps" title="步数" show-error>
+            <input type="number" bindinput="formInputChange" data-field="steps" placeholder="请输入需要更新的步数"/>
+        </mp-cell>
+    </mp-cells>
+</mp-form>
+<button type="primary" bindtap="submitForm">确认</button>
