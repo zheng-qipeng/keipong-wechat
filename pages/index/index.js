@@ -9,28 +9,13 @@ Page({
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
     canIUseGetUserProfile: false,
-    canIUseOpenData: wx.canIUse('open-data.type.userAvatarUrl') && wx.canIUse('open-data.type.userNickName') // 如需尝试获取用户信息可改为false
-  },
-  // 事件处理函数
-  bindViewTap() {
-    wx.navigateTo({
-      url: '/pages/logs/logs'
-    })
-  },
-  toTCaptcha() {
-    wx.navigateTo({
-      url: '/pages/t-captcha/t-captcha'
-    })
-  },
-  toModemBookmarks() {
-    wx.navigateTo({
-      url: '/pages/modem-bookmarks/modem-bookmarks'
-    })
-  },
-  toXiaomiSteps() {
-    wx.navigateTo({
-      url: '/pages/xiaomi-steps/xiaomi-steps'
-    })
+    canIUseOpenData: wx.canIUse('open-data.type.userAvatarUrl') && wx.canIUse('open-data.type.userNickName'), // 如需尝试获取用户信息可改为false
+    markers: [{
+      id: 0,
+      latitude: 22.582719470008538,
+      longitude: 113.9536608368154,
+      name: "丽新花园",
+    }]
   },
   onLoad() {
     if (wx.getUserProfile) {
@@ -38,6 +23,12 @@ Page({
         canIUseGetUserProfile: true
       })
     }
+    // 使用 wx.createMapContext 获取 map 上下文
+    this.mapCtx = wx.createMapContext('myMap')
+  },
+  onReady() {
+    // 将地图中心移置当前定位点
+    this.mapCtx.moveToLocation()
   },
   getUserProfile(e) {
     // 推荐使用wx.getUserProfile获取用户信息，开发者每次通过该接口获取用户个人信息均需用户确认，开发者妥善保管用户快速填写的头像昵称，避免重复弹窗
@@ -59,5 +50,11 @@ Page({
       userInfo: e.detail.userInfo,
       hasUserInfo: true
     })
-  }
+  },
+  // 事件处理函数
+  bindViewTap() {
+    wx.navigateTo({
+      url: '/pages/logs/logs'
+    })
+  },
 })
