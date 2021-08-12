@@ -60,4 +60,11 @@ Page({
       url: '/pages/logs/logs'
     })
   },
+  bindCopyUrl(e) {
+    const { url } = e.currentTarget.dataset
+    // 设置系统剪贴板的内容
+    wx.setClipboardData({
+      data: url,
+    })
+  }
 })

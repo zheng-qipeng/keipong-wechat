@@ -15,7 +15,7 @@
 
 movable-area {
   width: 750rpx;
-  height: calc(100% - 168rpx - 300rpx);
+  height: calc(100% - 168rpx - 300rpx - (35px + 16rpx));
   /*background-color: #eee;*/
 }
 movable-view {
@@ -31,4 +31,8 @@ movable-view [style] {
   font-size: 24rpx;
   color: blue;
   text-decoration: underline;
+}
+
+.weui-footer {
+  padding-bottom: 16rpx;
 }

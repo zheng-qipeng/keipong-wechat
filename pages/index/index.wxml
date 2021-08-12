@@ -35,4 +35,12 @@
     </movable-view>
   </movable-area>
 
+  <!--在引入 weui.wxss 后，可以直接使用 weui-wxss 中定义的 class 自定义样式(https://github.com/wechat-miniprogram/weui-miniprogram/tree/master/tools/demo)-->
+  <view class="weui-footer">
+    <view class="weui-footer__links">
+      <navigator url="http://keipong.com" data-url="http://keipong.com" class="weui-footer__link" bindtap="bindCopyUrl">keipong.com</navigator>
+    </view>
+    <view class="weui-footer__text">Copyright © 2019 - keipong</view>
+  </view>
+
 </view>
