@@ -1,15 +1,14 @@
 // index.js
 // 获取应用实例
 const app = getApp()
+const defaultAvatarUrl = 'https://mmbiz.qpic.cn/mmbiz/icTdbqWNOwNRna42FI242Lcia07jQodd2FJGIYQfG0LAJGFxM4FbnQP6yfMxBgJ0F3YRqJCJ1aPAK2dQagdusBZg/0'
 
 Page({
   data: {
+    avatarUrl: defaultAvatarUrl,
+    nickname: '请输入昵称',
     motto: '你好，欢迎',
     userInfo: {},
-    hasUserInfo: false,
-    canIUse: wx.canIUse('button.open-type.getUserInfo'),
-    canIUseGetUserProfile: false,
-    canIUseOpenData: wx.canIUse('open-data.type.userAvatarUrl') && wx.canIUse('open-data.type.userNickName'), // 如需尝试获取用户信息可改为false
     markers: [{
       id: 0,
       latitude: 22.582719470008538,
@@ -18,11 +17,11 @@ Page({
     }]
   },
   onLoad() {
-    if (wx.getUserProfile) {
-      this.setData({
-        canIUseGetUserProfile: true
-      })
-    }
+    // 用户信息
+    const {avatarUrl, nickname} = wx.getStorageSync('userInfo')
+    if (avatarUrl) this.setData({avatarUrl})
+    if (nickname) this.setData({nickname})
+
     // 使用 wx.createMapContext 获取 map 上下文
     this.mapCtx = wx.createMapContext('myMap')
   },
@@ -33,27 +32,6 @@ Page({
   onShareAppMessage() {}, // 用户点击右上角转发
   onShareTimeline() {}, // 用户点击右上角转发到朋友圈
   onAddToFavorites() {}, // 用户点击右上角收藏
-  getUserProfile(e) {
-    // 推荐使用wx.getUserProfile获取用户信息，开发者每次通过该接口获取用户个人信息均需用户确认，开发者妥善保管用户快速填写的头像昵称，避免重复弹窗
-    wx.getUserProfile({
-      desc: '展示用户信息', // 声明获取用户个人信息后的用途，后续会展示在弹窗中，请谨慎填写
-      success: (res) => {
-        console.log(res)
-        this.setData({
-          userInfo: res.userInfo,
-          hasUserInfo: true
-        })
-      }
-    })
-  },
-  getUserInfo(e) {
-    // 不推荐使用getUserInfo获取用户信息，预计自2021年4月13日起，getUserInfo将不再弹出弹窗，并直接返回匿名的用户个人信息
-    console.log(e)
-    this.setData({
-      userInfo: e.detail.userInfo,
-      hasUserInfo: true
-    })
-  },
   // 事件处理函数
   bindViewTap() {
     wx.navigateTo({
@@ -66,5 +44,26 @@ Page({
     wx.setClipboardData({
       data: url,
     })
-  }
+  },
+  onChooseAvatar(e) {
+    const { avatarUrl } = e.detail
+    this.setData({
+      avatarUrl,
+    })
+    wx.setStorageSync('userInfo', {
+      ...wx.getStorageSync('userInfo'),
+      avatarUrl,
+    })
+  },
+  blurInput(e) {
+    const value = e.detail.value
+    this.setData({
+      nickname: value
+    })
+    wx.setStorageSync('userInfo', {
+      ...wx.getStorageSync('userInfo'),
+      nickname: value,
+    })
+  },
+
 })
