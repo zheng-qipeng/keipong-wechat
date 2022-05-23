@@ -2,7 +2,6 @@
   "pages":[
     "pages/index/index",
     "pages/logs/logs",
-    "pages/t-captcha/t-captcha",
     "pages/modem-bookmarks/modem-bookmarks",
     "pages/xiaomi-steps/xiaomi-steps"
   ],
@@ -14,12 +13,7 @@
   },
   "style": "v2",
   "sitemapLocation": "sitemap.json",
-  "plugins": {
-    "myPlugin": {
-      "version": "1.0.0",
-      "provider": "wxb302e0fc8ab232b4"
-    }
-  },
+  "plugins": {},
   "useExtendedLib": {
     "weui": true
   },

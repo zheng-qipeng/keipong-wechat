@@ -12,13 +12,10 @@
     <movable-view direction="all" out-of-bounds x="20rpx" y="20rpx" style="width: 160rpx;" bindchange="vibrateShort">
       <text style="color: #000; text-decoration: none;" bindtap="bindViewTap">{{motto}}</text>
     </movable-view>
-    <movable-view direction="all" out-of-bounds x="20rpx" y="120rpx" style="width: 140rpx;" bindchange="vibrateShort">
-      <navigator url="/pages/t-captcha/t-captcha" hover-class="none" style="">t-captcha</navigator>
-    </movable-view>
-    <movable-view direction="all" out-of-bounds x="20rpx" y="220rpx" style="width: 260rpx;" bindchange="vibrateShort">
+    <movable-view direction="all" out-of-bounds x="20rpx" y="120rpx" style="width: 260rpx;" bindchange="vibrateShort">
       <navigator url="/pages/modem-bookmarks/modem-bookmarks" hover-class="none" style="">http://keipong.com</navigator>
     </movable-view>
-    <movable-view direction="all" out-of-bounds x="20rpx" y="320rpx" style="width: 220rpx;" bindchange="vibrateShort">
+    <movable-view direction="all" out-of-bounds x="20rpx" y="220rpx" style="width: 220rpx;" bindchange="vibrateShort">
       <navigator url="/pages/xiaomi-steps/xiaomi-steps" hover-class="none" style="">小米运动步数更新</navigator>
     </movable-view>
   </movable-area>
