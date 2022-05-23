@@ -65,5 +65,10 @@ Page({
       nickname: value,
     })
   },
+  vibrateShort() {
+    wx.vibrateShort({
+      type: 'light', // 震动强度类型，有效值为：heavy、medium、light
+    })
+  },
 
 })
